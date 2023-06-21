@@ -1,5 +1,5 @@
 def convertlist(list):
-  output
+  output = 0
   for item in list:
     output = output*10 + item
   return output
