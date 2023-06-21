@@ -1,6 +1,7 @@
 def convertlist(list):
   output = 0
-  for item in list:
-    output = output*10 + item
+  multiplier = 1
+  for item in reversed(list):
+    output += item * multiplier
+    multiplier = multiplier * 10
   return output
-  
