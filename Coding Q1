@@ -1,0 +1,6 @@
+def convertlist(list):
+  output
+  for item in list:
+    output = output*10 + item
+  return output
+  
