@@ -1,0 +1,22 @@
+import random
+def numberguessinggame():
+    number = random.randint(1,100)
+    guesscheck = True
+    "Welcome to the random number guessing game.."
+    while guesscheck:
+        guess = int(input("Guess a number between 1 and 100: "))
+        guesscheck = guesschecker(guess, number)
+    print("Yes! " + str(number) + " was correct!")
+    print("You win!")
+
+def guesschecker(input_, n):
+    if input_ > n:
+        print("Too High")
+        return True
+    elif input_ < n:
+        print("Too Low")
+        return True
+    else:
+        return False
+        
+numberguessinggame()   
