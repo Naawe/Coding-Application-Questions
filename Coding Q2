@@ -1,14 +1,15 @@
+#this function generates a random number then runs a loop until the user guesses the correct number
 import random
 def numberguessinggame():
-    number = random.randint(1,100)
-    guesscheck = True
+    number = random.randint(1,100) #initialises random number
+    guesscheck = True #initiliases guesscheck as true
     "Welcome to the random number guessing game.."
     while guesscheck:
-        guess = int(input("Guess a number between 1 and 100: "))
-        guesscheck = guesschecker(guess, number)
-    print("Yes! " + str(number) + " was correct!")
+        guess = int(input("Guess a number between 1 and 100: ")) #prompts user to guess a number
+        guesscheck = guesschecker(guess, number) #runs guess check function if it returns false the loop breaks
+    print("Yes! " + str(number) + " was correct!") #if the loop breaks it means the user got the guess correct 
     print("You win!")
-
+#this function is used to check user input if they're wrong it prints too high or too low and returns true to continue the loop else it returns false to break the loop
 def guesschecker(input_, n):
     if input_ > n:
         print("Too High")
