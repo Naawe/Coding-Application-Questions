@@ -3,21 +3,21 @@ import random
 def numberguessinggame():
     number = random.randint(1,100) #initialises random number
     guesscheck = True #initiliases guesscheck as true
-    "Welcome to the random number guessing game.."
+    print("Welcome to the random number guessing game..")
     while guesscheck:
         guess = int(input("Guess a number between 1 and 100: ")) #prompts user to guess a number
         guesscheck = guesschecker(guess, number) #runs guess check function if it returns false the loop breaks
     print("Yes! " + str(number) + " was correct!") #if the loop breaks it means the user got the guess correct 
     print("You win!")
-#this function is used to check user input if they're wrong it prints too high or too low and returns true to continue the loop else it returns false to break the loop
+#this function is used to check user input, its takes the guess and the number as input and checks the guess against the number, it prints a reponse then returns.
 def guesschecker(input_, n):
-    if input_ > n:
-        print("Too High")
-        return True
-    elif input_ < n:
-        print("Too Low")
-        return True
-    else:
-        return False
+    if input_ > n: #checks to see if user input is above number
+        print("Too High") #prints too high if so
+        return True #returns True to continue loop
+    elif input_ < n: #checks to see if user input is below number
+        print("Too Low") #prints too low if so 
+        return True #returns true to continue the loop
+    else: #if its not higher of lower its the same
+        return False #if its the same it returns False which breaks the loop
         
 numberguessinggame()   
