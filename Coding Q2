@@ -1,23 +1,50 @@
-#this function generates a random number then runs a loop until the user guesses the correct number
 import random
-def numberguessinggame():
-    number = random.randint(1,100) #initialises random number
-    guesscheck = True #initiliases guesscheck as true
+
+"""
+This code contains three functions the first "number_guessing_game" could be considered the main function through which the game is initiated
+and it calls the other functions. The purpose of this function is to continually prompt the player until they get the right answer, then it
+ends the game. It in turn calls "valid_input" which takes a number from the user, makes sure its a valid guess and then returns it. Then
+it calls "check_guess" which checks if the validated input is higher, lower or equal to the target number printing out the result and then
+returning True or False if it returns True back to the main function "number_guessing_game" then the loop breaks and the game ends.
+"""
+
+MIN_RANGE = 0
+MAX_RANGE = 100
+
+#The main function which takes the input and then loops until a correct answer breaks the loop.
+def number_guessing_game():
+    target = random.randint(MIN_RANGE, MAX_RANGE) 
+    stop_game = False 
     print("Welcome to the random number guessing game..")
-    while guesscheck:
-        guess = int(input("Guess a number between 1 and 100: ")) #prompts user to guess a number
-        guesscheck = guesschecker(guess, number) #runs guess check function if it returns false the loop breaks
-    print("Yes! " + str(number) + " was correct!") #if the loop breaks it means the user got the guess correct 
+
+    while not stop_game:
+        guess =  validate_input()
+        stop_game = check_guess(guess, target) 
+    
+    print("Yes! " + str(target) + " was correct!") 
     print("You win!")
-#this function is used to check user input, its takes the guess and the number as input and checks the guess against the number, it prints a reponse then returns.
-def guesschecker(input_, n):
-    if input_ > n: #checks to see if user input is above number
-        print("Too High") #prints too high if so
-        return True #returns True to continue loop
-    elif input_ < n: #checks to see if user input is below number
-        print("Too Low") #prints too low if so 
-        return True #returns true to continue the loop
-    else: #if its not higher of lower its the same
-        return False #if its the same it returns False which breaks the loop
+
+#The function for checking whether the input is valid, it prints out what's wrong with the input and keeps looping until it gets a valid guess.
+def validate_input():
+    while True:
+        try:
+            guess = int(input("Guess an integer between 1 and 100: "))
+            if MIN_RANGE <= guess <= MAX_RANGE:
+                return guess
+            else:
+                print("Not within valid range")
+        except:
+            print("Not an integer")
+
+#The function for checking if the number is on the target, if its not it reveals if the guess was too high or too low then returns True or False.
+def check_guess(input, target):
+    if input > target: 
+        print("Too High") 
+        return False 
+    elif input < target: 
+        print("Too Low") 
+        return False 
+    else: 
+        return True 
         
-numberguessinggame()   
+number_guessing_game() 
